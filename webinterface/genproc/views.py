@@ -24,7 +24,7 @@ def genpoc_by_id(request):
     result = {
         'id': row.id,
         'name': row.name,
-        'orgn': row.orgn,
+        'ogrn': row.ogrn,
         'inn': row.inn,
          'addrloc_jur': row.addrloc_jur,
         'addrloc_ip': row.addrloc_ip,
@@ -51,12 +51,10 @@ def substr(request):
     dbsession = DBSession()
 
     substr = request.matchdict['substr'].encode('utf-8')
-    print substr
     like_str = "%{0}%".format(substr)
-    print like_str
     rows = dbsession.query(Genproc).filter(Genproc.name.ilike(like_str)).limit(LIMIT)
     result = []
     for row in rows:
-        result.append({'id': row.id, 'name': row.name, 'orgn': row.orgn, 'inn': row.inn})
+        result.append({'id': row.id, 'name': row.name, 'ogrn': row.ogrn, 'inn': row.inn})
 
     return result

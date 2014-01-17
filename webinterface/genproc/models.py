@@ -35,7 +35,7 @@ class Genproc(Base):
     addrloc_ip = Column(Text)
     addr_act = Column(Text)
     addr_obj = Column(Text)
-    orgn = Column(Text, index=True)
+    ogrn = Column(Text, index=True)
     inn = Column(Text, index=True)
     goal = Column(Text)
     osn_datestart = Column(Text)
