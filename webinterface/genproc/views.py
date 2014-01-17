@@ -21,7 +21,28 @@ def genpoc_by_id(request):
     id = request.matchdict['id']
     row = dbsession.query(Genproc).filter_by(id=id).one()
 
-    return {'id': row.id, 'name': row.name, 'orgn': row.orgn.decode('utf8'), 'inn': row.inn}
+    result = {
+        'id': row.id,
+        'name': row.name,
+        'orgn': row.orgn,
+        'inn': row.inn,
+         'addrloc_jur': row.addrloc_jur,
+        'addrloc_ip': row.addrloc_ip,
+        'addr_act': row.addr_act,
+        'addr_obj': row.addr_obj,
+        'goal': row.goal,
+        'osn_datestart':row.osn_datestart,
+        'osn_dateend': row.osn_dateend,
+        'osn_datestart2': row.osn_datestart2,
+        'osn_other': row.osn_other,
+        'check_month': row.check_month,
+        'check_days': row.check_days,
+        'check_hours': row.check_hours,
+        'check_form': row.check_form,
+        'check_org': row.check_org
+    }
+
+    return result
 
 
 @view_config(route_name='substr', renderer='json')
